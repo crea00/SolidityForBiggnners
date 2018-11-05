@@ -13,11 +13,21 @@ contract Bank {
   }
 
   function withdraw(uint amount) public {
-    value -= amount;
+    if(checkValue(amount)) {
+      value -= amount;
+    }
   }
 
   function balance() public constant returns(uint) {
     return value;
+  }
+
+  function checkValue(uint amount) public returns(bool) {
+    return value >= amount;
+  }
+
+  function loan() public returns(bool) {
+    return true;
   }
 }
 
